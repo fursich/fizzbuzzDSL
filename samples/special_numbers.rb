@@ -26,7 +26,7 @@ module SpecialNumbers
   end
 
   rule_for ('PERFECT') { |n| perfect_num?(n) }            # 完全数
-  rule_for ('prime') {:prime?}                            # 素数
+  rule_for ('prime') {|n| n.prime? }                    # 素数
   rule_for ('square') {|n| Math.sqrt(n).round ** 2 == n } # 平方数
 
   fizzbuzz label: true, skip: true                        # 判定条件にかからなければ何も出力しない
