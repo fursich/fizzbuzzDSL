@@ -1,8 +1,16 @@
 
-self.setup { @min=-1 }
-                                            # @max,@minの指定がなければデフォルト(1-20)から探索
-self.set_rules ('fizzbuzz') { |n| n % 15 == 0 }  # ルールは上から優先して適用される
-self.set_rules ('fizz') { |n| n % 3 == 0 }       # ()を外すと､後ろのブロックの解釈が変わるのでつけておく(またはdo..endでくくる)
-self.set_rules ('buzz') { |n| n % 5 == 0 }
-self.set_rules () { true }                       # 空引数の場合､数字をそのまま出力する
-self.fizzbuzz label: true
+module FizzBuzzTest2
+  require './FizzBuzzDSL'
+  include FizzBuzzDSL # 最初にインクルードする
+
+  count_upto 10
+
+  def self.even_number? (num)  # 偶数を判定する
+    num % 2 == 0
+  end
+
+  rule_for (:square) {|n| Math.sqrt(n).round ** 2 == n }  # 平方数
+  rule_for (:even) {|n| even_number?(n) }  # 偶数
+
+end
+FizzBuzzTest2.fizzbuzz
