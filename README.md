@@ -77,21 +77,30 @@ A "rule" is a message that accompanied with a block that gives boolean result wh
 rule_for ([message]) { |x| rule(x) }        # show the [message] when the given block is evaluated as true
 rule_for [message] do |x|; rule(x); end     # you could also write the rule in this manner
 reset_rules                                 # clear all the rules
+```
 
 To set ranges, you could use either of the following methods. (default range is from 1 to 20)
 
+```ruby
 set_counter from: [min] to: [max]           # starting from [min] upto [max]
 count_from [min]                            # start from [min]
 count_upto [max]                            # continue till [max]
+```
 
-add_evaluator :original_method do |x|       # additional method is defined either of the following ways
+An additional method can be defined either of the following ways
+
+```ruby
+add_evaluator :original_method do |x|
   somerules(x)
 end
 
 def self.new_funtion (x)
   somerules(x)
 end
+```
 
+To run it simply type 'fizzbuzz'
+```ruby
 fizzbuzz [label: boolean] [skip: boolean]   # execute DSL
                                             # (options) label - whether to show the number label
                                             #           skip  - true: skip the number when all the condition fails / false: show the number itself
