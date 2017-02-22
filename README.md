@@ -73,6 +73,7 @@ end
 
 A "rule" is a message that accompanied with a block that gives boolean result when evaluated. (earlier rule is prioritized to the latter)
 
+```ruby
 rule_for ([message]) { |x| rule(x) }        # show the [message] when the given block is evaluated as true
 rule_for [message] do |x|; rule(x); end     # you could also write the rule in this manner
 reset_rules                                 # clear all the rules
@@ -94,4 +95,4 @@ end
 fizzbuzz [label: boolean] [skip: boolean]   # execute DSL
                                             # (options) label - whether to show the number label
                                             #           skip  - true: skip the number when all the condition fails / false: show the number itself
-
+```
